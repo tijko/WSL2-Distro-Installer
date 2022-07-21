@@ -1,3 +1,5 @@
+# 
+# Installing WSL2 Distribution without Windows Store Access
 #
 Write-Host "Installing WSL2 Linux Distribution (default Ubuntu)"
 # Set current working directory to TEMP
@@ -21,6 +23,9 @@ Remove-Item $installerPath }
 # If full ISO is needed hit this URL
 #http://ftp5.gwdg.de/pub/linux/oracle/OL7/u8/x86_64/OracleLinux-R7-U8-Server-x86_64-dvd.iso
 
+# XXX Get hostname of system being deployed to
+$hname = [System.Net.Dns]::GetHostName() | Out-File -FilePath .\hostname; 
+
 # Create WSL ubuntu install directory
 if ((Test-Path "C:\wsl-ubuntu")) {
 rm c:\wsl-ubuntu
@@ -37,6 +42,10 @@ Invoke-WebRequest https://github.com/EXALAB/Anlinux-Resources/blob/master/Rootfs
 # Install WSL Ubuntu
 Write-Host "Installing WSL2 Ubuntu distribution..."
 wsl --import Ubuntu C:\wsl-ubuntu ubuntu.tar 
+
+# Set hostname of new distribution
+Write-Host "Setting hostname of distribution"
+#mv hostname C:\wsl-ubuntu\rootfs\etc\
 
 Write-Host "Cleaning up...."
 rm ubuntu.*
