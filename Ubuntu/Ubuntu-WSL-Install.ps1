@@ -36,7 +36,7 @@ Invoke-WebRequest https://github.com/EXALAB/Anlinux-Resources/blob/master/Rootfs
 
 # Install WSL Ubuntu
 Write-Host "Installing WSL2 Ubuntu distribution..."
-wsl --import Ubuntu-Test C:\wsl-ubuntu ubuntu.tar 
+wsl --import Ubuntu C:\wsl-ubuntu ubuntu.tar 
 
 Write-Host "Cleaning up...."
 rm ubuntu.*
