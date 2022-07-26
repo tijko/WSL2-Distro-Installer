@@ -27,10 +27,10 @@ Remove-Item $installerPath }
 $hname = [System.Net.Dns]::GetHostName() | Out-File -FilePath .\hostname; 
 
 # Create WSL ubuntu install directory
-if ((Test-Path "C:\wsl-ubuntu")) {
-rm c:\wsl-ubuntu
+if ((Test-Path "C:\wsl-ubuntu-test")) {
+rm c:\wsl-ubuntu-test
 } 
-mkdir c:\wsl-ubuntu
+mkdir c:\wsl-ubuntu-test
 
 # Download Ubuntu rootfs archive
 Write-Host "Downloading Ubuntu rootfs...."
@@ -41,7 +41,7 @@ Invoke-WebRequest https://github.com/EXALAB/Anlinux-Resources/blob/master/Rootfs
 
 # Install WSL Ubuntu
 Write-Host "Installing WSL2 Ubuntu distribution..."
-wsl --import Ubuntu C:\wsl-ubuntu ubuntu.tar 
+wsl --import Ubuntu-Test C:\wsl-ubuntu-test ubuntu.tar 
 
 # Set hostname of new distribution
 Write-Host "Setting hostname of distribution"
